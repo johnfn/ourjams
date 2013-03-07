@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: compos
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  description :text
+#  start       :date
+#  end         :date
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  start: 2013-03-06
+  end: 2013-03-06
+
+two:
+  name: MyString
+  description: MyText
+  start: 2013-03-06
+  end: 2013-03-06

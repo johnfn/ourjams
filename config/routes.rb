@@ -1,5 +1,8 @@
 Hourcompo::Application.routes.draw do
+  get "compos/new"
+
   resources :users
+  resources :compos
 
   get "users/new"
   match '/', to: 'application#show'

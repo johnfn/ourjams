@@ -1,0 +1,37 @@
+<% provide(:title, @compo.name) %>
+
+<div class="row">
+  <section>
+    <h1>
+      <%= @compo.name %>
+    </h1>
+
+    <p class="lead">
+      <%= @compo.description %>
+    </p>
+  </section>
+
+  <section>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th> User </th>
+          <th> Title </th>
+          <th> Date </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @compo.users.each do |u| %>
+          <tr>
+            <td> <%= u.name %> </td>
+            <td> Herp the Derps. </td>
+            <td> 8-13-9999 </td>
+          </tr>
+          <tr>
+            <td colspan="3"> Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp.   </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+</div>

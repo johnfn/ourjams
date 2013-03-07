@@ -12,6 +12,8 @@
 
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :password
+  has_and_belongs_to_many :compos
+
   has_secure_password
 
   before_save { |user| user.email = email.downcase }
