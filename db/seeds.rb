@@ -12,5 +12,5 @@ user.save
 entry = Entry.new(description: "awesome entry")
 entry.save
 
-jam = Jam.new(description: "awesome jam")
+jam = Jam.new(description: "this is an awesome jam", name "superjam")
 jam.save

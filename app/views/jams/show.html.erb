@@ -21,7 +21,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @jam.users.each do |u| %>
+        <% @jam.entries.each do |u| %>
           <tr>
             <td> <%= u.name %> </td>
             <td> Herp the Derps. </td>
@@ -30,6 +30,10 @@
           <tr>
             <td colspan="3"> Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp.   </td>
           </tr>
+        <% end %>
+
+        <% if @jam.entries.count == 0 %>
+            <td colspan="3"> No entries yet. </td>
         <% end %>
       </tbody>
     </table>
@@ -49,8 +53,6 @@
       <%= f.text_field :link %>
 
       <%= hidden_field_tag 'jam', @jam.id %>
-
-      <%= f.hidden @jam.id %>
 
       <br/>
 

@@ -3,5 +3,13 @@
 </div>
 
 <%= link_to "Sign up", "/signup" %>
-<%= @herpderp %>
 
+<p>
+  Recent jams:
+</p>
+
+<section>
+  <% @jams.each do |jam| %>
+    <%= link_to jam.description, jam %>
+  <% end %>
+</section>

@@ -3,6 +3,6 @@ class EntriesController < ApplicationController
   end
 
   def create
-    puts params
+    entry = Entry.new(params[:entry])
   end
 end

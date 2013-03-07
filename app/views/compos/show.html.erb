@@ -21,7 +21,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @jam.users.each do |u| %>
+        <% @jam.entries.each do |u| %>
           <tr>
             <td> <%= u.name %> </td>
             <td> Herp the Derps. </td>
@@ -49,8 +49,7 @@
       <%= f.text_field :link %>
 
       <%= hidden_field_tag 'jam', @jam.id %>
-
-      <%= f.hidden @jam.id %>
+      <%= hidden_field_tag 'user', @jam.id %>
 
       <br/>
 
