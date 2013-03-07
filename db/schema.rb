@@ -11,24 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130307053542) do
+ActiveRecord::Schema.define(:version => 20130307074338) do
 
-  create_table "compos", :force => true do |t|
+  create_table "entries", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "link"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "jam_id"
+  end
+
+  create_table "jams", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.date     "start"
     t.date     "end"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "entry_id"
   end
-
-  create_table "compos_users", :id => false, :force => true do |t|
-    t.integer "compo_id"
-    t.integer "user_id"
-  end
-
-  add_index "compos_users", ["compo_id", "user_id"], :name => "index_compos_users_on_compo_id_and_user_id"
-  add_index "compos_users", ["user_id", "compo_id"], :name => "index_compos_users_on_user_id_and_compo_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"
