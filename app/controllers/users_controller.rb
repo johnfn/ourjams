@@ -3,7 +3,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    puts "here comes the description!!!!!!!!!!", @user.description
   end
 
   def new
@@ -14,8 +13,7 @@ class UsersController < ApplicationController
     current_user.description = params[:user][:description]
     current_user.save
 
-    @user = current_user
-    redirect_to @user
+    redirect_to current_user
   end
 
   def create

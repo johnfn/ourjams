@@ -5,7 +5,6 @@ module SessionsHelper
   end
 
   def sign_out
-    puts "signout!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     cookies.delete(:remember_token)
   end
 

@@ -14,4 +14,6 @@
 
 class Entry < ActiveRecord::Base
   attr_accessible :description, :link, :name
+  belongs_to :jam
+  belongs_to :user
 end

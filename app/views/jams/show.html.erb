@@ -23,12 +23,12 @@
       <tbody>
         <% @jam.entries.each do |u| %>
           <tr>
+            <td> <%= u.user.name %> </td>
             <td> <%= u.name %> </td>
-            <td> Herp the Derps. </td>
-            <td> 8-13-9999 </td>
+            <td> <%= u.updated_at %> </td>
           </tr>
           <tr>
-            <td colspan="3"> Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp. Derp.   </td>
+            <td colspan="3"> <%= u.description %> </td>
           </tr>
         <% end %>
 
@@ -52,8 +52,9 @@
       <%= f.label :link %>
       <%= f.text_field :link %>
 
-      <%= hidden_field_tag 'jam', @jam.id %>
+      <%= hidden_field_tag 'entry[jam_id]', @jam.id %>
 
+      <%= hidden_field_tag 'entry[user_id]', current_user.id %>
       <br/>
 
       <%= f.submit "Submit entry", class: "btn btn-large btn-primary" %>
