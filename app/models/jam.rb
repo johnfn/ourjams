@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: compos
+# Table name: jams
 #
 #  id          :integer          not null, primary key
 #  name        :string(255)
@@ -9,6 +9,7 @@
 #  end         :date
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  entry_id    :integer
 #
 
 class Jam < ActiveRecord::Base

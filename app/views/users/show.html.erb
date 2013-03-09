@@ -7,7 +7,19 @@
     </h1>
 
     <p class="lead">
-      I'm the coolest compoer. <a href="/signout">(Sign out.)</a>
+      <%= @user.description %>
+      <% if signed_in? and current_user == @user %>
+        <div id="desc_form" style="display:none">
+          <%= form_for(@user) do |f| %>
+
+            <%= f.label :description %>
+            <%= f.text_area :description, :rows => 5 %>
+
+            <%= f.submit "Update", class: "btn btn-large btn-primary" %>
+          <% end %>
+        </div>
+        <a href="#" id="editdesc"> (Edit.) </a>
+      <% end %>
     </p>
   </section>
 

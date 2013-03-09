@@ -8,6 +8,9 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  password_digest :string(255)
+#  entry_id        :integer
+#  remember_token  :string(255)
+#  description     :string(255)
 #
 
 require 'test_helper'

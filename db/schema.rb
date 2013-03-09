@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130308081934) do
+ActiveRecord::Schema.define(:version => 20130309055036) do
 
   create_table "entries", :force => true do |t|
     t.string   "name"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20130308081934) do
     t.string   "password_digest"
     t.integer  "entry_id"
     t.string   "remember_token"
+    t.string   "description"
   end
 
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
