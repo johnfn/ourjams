@@ -3,6 +3,7 @@ Hourcompo::Application.routes.draw do
 
   get "jams/new"
 
+  resources :sessions
   resources :users
   resources :jams
   resources :entries
@@ -10,6 +11,10 @@ Hourcompo::Application.routes.draw do
   get "users/new"
   match '/', to: 'application#show'
   match '/signup',  to: 'users#new'
+  match '/signin', to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy'
+
+  root :to => "application#show"
 
 
   # The priority is based upon order of creation:

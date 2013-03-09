@@ -2,7 +2,12 @@
   <h1>Hour Compo</h1>
 </div>
 
-<%= link_to "Sign up", "/signup" %>
+<% if signed_in? %>
+  Hey, <%= current_user.name %>. <%= link_to "See your profile.", current_user %>
+<% else %>
+  <%= link_to "Sign up", "/signup" %>
+  <%= link_to "Sign in", "/sessions/new" %>
+<% end %>
 
 <p>
   Recent jams:
