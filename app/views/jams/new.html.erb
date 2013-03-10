@@ -31,6 +31,8 @@ $(function() {
       </span>
     </div>
 
+    <%= hidden_field_tag 'jam[organizer_id]', current_user.id %>
+
     <br/>
 
     <%= f.submit "New jam!", class: "btn btn-large btn-primary" %>

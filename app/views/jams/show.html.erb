@@ -9,6 +9,10 @@
     <p class="lead">
       <%= @jam.description %>
     </p>
+
+    <p class="lead">
+      Organized by <%= link_to @jam.user.name, @jam.user %>.
+    </p>
   </section>
 
   <section>

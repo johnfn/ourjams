@@ -16,6 +16,7 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :description, :entry_id, :jam_id
   has_many :entries
+  has_many :jams
 
   has_secure_password
 

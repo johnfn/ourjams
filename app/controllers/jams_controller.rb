@@ -4,7 +4,10 @@ class JamsController < ApplicationController
   end
 
   def create
+    #organizer = User.find(params[:user_id])
+    #params.delete(:user_id)
     @jam = Jam.create(params[:jam])
+    #@jam.user = organizer
     if @jam.save
       flash[:success] = "New Jam successfully created!"
       redirect_to @jam
