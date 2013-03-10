@@ -23,6 +23,8 @@
     </p>
   </section>
 
+  <h3> Organized jams: </h3>
+
   <section>
     <table class="table table-striped">
       <thead>
@@ -32,15 +34,35 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td> Stuff </td>
-          <td> 8-13-9999 </td>
-        </tr>
-        <tr>
-          <td> Stuff2 </td>
-          <td> 8-13-9999 </td>
-        </tr>
+        <% @user.jams.each do |jam| %>
+          <tr>
+            <td> <%= link_to jam.name, jam %> </td>
+            <td> <%= jam.created_at %> </td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </section>
+
+  <h3> Attended jams: </h3>
+
+  <section>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th> Compo Name </th>
+          <th> Date </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.entries.each do |entry| %>
+          <tr>
+            <td> <%= link_to entry.name, entry.jam %> </td>
+            <td> <%= entry.created_at %> </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+
 </div>

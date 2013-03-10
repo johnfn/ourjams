@@ -10,7 +10,10 @@
 
   <div class="container">
     <ul class="nav nav-pills">
-      <li> <a href="#">My Profile</a> </li>
+      <li> <a href="/">Home</a> </li>
+      <% if signed_in? %>
+      <li> <%= link_to "My Profile", current_user %> </li>
+      <% end %>
       <li> <a href="#">All Jams</a> </li>
       <li> <a href="/jams/new">New Jam</a> </li>
     </ul>
