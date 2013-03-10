@@ -13,6 +13,6 @@
 #
 
 class Jam < ActiveRecord::Base
-  attr_accessible :description, :end, :name, :start
+  attr_accessible :description, :end, :name, :start, :end
   has_many :entries
 end

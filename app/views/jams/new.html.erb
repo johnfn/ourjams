@@ -4,7 +4,8 @@
 
 <script>
 $(function() {
-  $("#datetimepicker").datetimepicker();
+  $("#datetimepicker1").datetimepicker();
+  $("#datetimepicker2").datetimepicker();
 });
 </script>
 
@@ -15,14 +16,23 @@ $(function() {
     <%= f.text_field :name %>
 
     <%= f.label :start %>
-
-    <div id="datetimepicker" class="input-append date">
-      <input type="text"></input>
+    <div id="datetimepicker1" class="input-append date">
+      <input type="text" data-format="dd/MM/yyyy hh:mm:ss" name="jam[start]"></input>
       <span class="add-on">
         <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
       </span>
     </div>
 
-    <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+    <%= f.label :end %>
+    <div id="datetimepicker2" class="input-append date">
+      <input type="text" data-format="dd/MM/yyyy hh:mm:ss" name="jam[end]"></input>
+      <span class="add-on">
+        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+      </span>
+    </div>
+
+    <br/>
+
+    <%= f.submit "New jam!", class: "btn btn-large btn-primary" %>
   <% end %>
 </div>
