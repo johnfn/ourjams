@@ -1,5 +1,6 @@
 class JamsController < ApplicationController
   def new
+    @jam = Jam.new
   end
 
   def show

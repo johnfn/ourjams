@@ -1,10 +1,11 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.2.12'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass-rails'
 gem 'bcrypt-ruby', '3.0.1'
 
 gem "jquery-rails"
+gem 'bootstrap-datetimepicker-rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

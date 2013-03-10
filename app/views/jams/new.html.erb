@@ -1,2 +1,28 @@
-<h1>Jams#new</h1>
-<p>Find me in app/views/jams/new.html.erb</p>
+<div class="center hero-unit">
+  <h1>New Jam.</h1>
+</div>
+
+<script>
+$(function() {
+  $("#datetimepicker").datetimepicker();
+});
+</script>
+
+<div class="span6 offset3">
+  <%= form_for(@jam) do |f| %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :start %>
+
+    <div id="datetimepicker" class="input-append date">
+      <input type="text"></input>
+      <span class="add-on">
+        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+      </span>
+    </div>
+
+    <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+  <% end %>
+</div>

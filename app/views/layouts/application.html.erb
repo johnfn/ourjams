@@ -9,6 +9,12 @@
 <body>
 
   <div class="container">
+    <ul class="nav nav-pills">
+      <li> <a href="#">My Profile</a> </li>
+      <li> <a href="#">All Jams</a> </li>
+    </ul>
+  </div>
+  <div class="container">
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>

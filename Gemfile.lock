@@ -37,8 +37,10 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.1)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (2.3.0.1)
-      sass (~> 3.2)
+    bootstrap-datetimepicker-rails (0.0.10)
+    bootstrap-sass-rails (2.3.1.0)
+      railties (>= 3.1.0)
+      sass-rails (>= 3.1.0)
     builder (3.0.4)
     coderay (1.0.9)
     coffee-rails (3.2.2)
@@ -120,7 +122,8 @@ DEPENDENCIES
   bcrypt-ruby (= 3.0.1)
   better_errors
   binding_of_caller
-  bootstrap-sass
+  bootstrap-datetimepicker-rails
+  bootstrap-sass-rails
   coffee-rails (~> 3.2.1)
   jquery-rails
   rails (= 3.2.12)

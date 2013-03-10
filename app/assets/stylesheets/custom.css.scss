@@ -1,1 +1,10 @@
 @import "bootstrap";
+
+.nav {
+  position: relative;
+  display: block;
+}
+
+.nav >li {
+  float: left;
+}
