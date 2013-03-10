@@ -16,52 +16,57 @@
   </section>
 
   <section>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th> User </th>
-          <th> Title </th>
-          <th> Date </th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @jam.entries.each do |u| %>
-          <tr>
-            <td> <%= u.user.name %> </td>
-            <td> <%= u.name %> </td>
-            <td> <%= u.updated_at %> </td>
-          </tr>
-          <tr>
-            <td colspan="3"> <%= u.description %> </td>
-          </tr>
-        <% end %>
 
-        <% if @jam.entries.count == 0 %>
-            <td colspan="3"> No entries yet. </td>
-        <% end %>
-      </tbody>
-    </table>
+    <% if @jam.entries.count != 0 %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th> User </th>
+            <th> Title </th>
+            <th> Date </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @jam.entries.each do |u| %>
+            <tr>
+              <td> <%= link_to u.user.name, u.user %> </td>
+              <td> <%= u.name %> </td>
+              <td> <%= time_ago_in_words(u.updated_at) %> ago </td>
+            </tr>
+            <tr>
+              <td style="border-top: none;" colspan="3"> <%= u.description %> </td>
+            </tr>
+          <% end %>
+
+        </tbody>
+      </table>
+    <% else %>
+      No entries yet.
+    <% end %>
   </section>
 
+  <% if signed_in? %>
+    <div class="span6 offset4">
+      <%= form_for(@entry) do |f| %>
 
-  <div class="span6 offset4">
-    <%= form_for(@entry) do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+        <%= f.label :description %>
+        <%= f.text_area :description %>
 
-      <%= f.label :description %>
-      <%= f.text_area :description %>
+        <%= f.label :link %>
+        <%= f.text_field :link %>
 
-      <%= f.label :link %>
-      <%= f.text_field :link %>
+        <%= hidden_field_tag 'entry[jam_id]', @jam.id %>
 
-      <%= hidden_field_tag 'entry[jam_id]', @jam.id %>
+        <%= hidden_field_tag 'entry[user_id]', current_user.id %>
+        <br/>
 
-      <%= hidden_field_tag 'entry[user_id]', current_user.id %>
-      <br/>
-
-      <%= f.submit "Submit entry", class: "btn btn-large btn-primary" %>
-    <% end %>
-  </div>
+        <%= f.submit "Submit entry", class: "btn btn-large btn-primary" %>
+      <% end %>
+    </div>
+  <% else %>
+    <% link_to "Sign up", "/signup" %>
+  <% end %>
 </div>

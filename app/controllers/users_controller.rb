@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     params[:user].delete("password_confirmation")
     @user = User.create(params[:user])
     if @user.save
-      flash[:success] = "Welcome to Hour Compo!"
+      flash[:success] = "Welcome to Hour Jams!"
       redirect_to @user
     else
       flash[:failure] = "That didn't verify, for some reason."

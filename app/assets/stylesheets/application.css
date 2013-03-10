@@ -13,3 +13,7 @@
  *= require bootstrap-datetimepicker
  *= require _font-awesome
  */
+
+i {
+  display: inline-block;
+}

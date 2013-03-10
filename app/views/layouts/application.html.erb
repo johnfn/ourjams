@@ -10,12 +10,17 @@
 
   <div class="container">
     <ul class="nav nav-pills">
-      <li> <a href="/">Home</a> </li>
+      <li> <a href="/"> <i class="icon-home"></i>
+        Hour Jams</a> </li>
       <% if signed_in? %>
-      <li> <%= link_to "My Profile", current_user %> </li>
+      <li> <%= link_to "<i class='icon-user'></i>My Profile".html_safe, current_user %> </li>
+      <li> <%= link_to "<i class='icon-signout'></i>Sign Out".html_safe, "/signout" %> </li>
+      <% else %>
+        <li> <%= link_to "<i class='icon-check'></i>Sign up".html_safe, "/signup" %> </li>
+        <li> <%= link_to "<i class='icon-signin'></i>Sign in".html_safe, "/sessions/new" %> </li>
       <% end %>
-      <li> <a href="#">All Jams</a> </li>
-      <li> <a href="/jams/new">New Jam</a> </li>
+      <li> <a href="#"><i class='icon-reorder'></i>All Jams</a> </li>
+      <li> <a href="/jams/new"><i class='icon-plus'></i>New Jam</a> </li>
     </ul>
   </div>
   <div class="container">

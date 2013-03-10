@@ -13,7 +13,7 @@
 #
 
 class Entry < ActiveRecord::Base
-  attr_accessible :description, :link, :name
+  attr_accessible :description, :link, :name, :jam, :user
   belongs_to :jam
   belongs_to :user
 end

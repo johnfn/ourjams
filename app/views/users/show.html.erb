@@ -23,46 +23,50 @@
     </p>
   </section>
 
-  <h3> Organized jams: </h3>
+  <% if @user.jams.count > 0 %>
+    <h3> Organized jams: </h3>
 
-  <section>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th> Compo Name </th>
-          <th> Date </th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @user.jams.each do |jam| %>
+    <section>
+      <table class="table table-striped">
+        <thead>
           <tr>
-            <td> <%= link_to jam.name, jam %> </td>
-            <td> <%= jam.created_at %> </td>
+            <th> Compo Name </th>
+            <th> Date </th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </section>
+        </thead>
+        <tbody>
+          <% @user.jams.each do |jam| %>
+            <tr>
+              <td> <%= link_to jam.name, jam %> </td>
+              <td> <%= jam.created_at %> </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </section>
+  <% end %>
 
-  <h3> Attended jams: </h3>
+  <% if @user.jams.count > 0 %>
+    <h3> Attended jams: </h3>
 
-  <section>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th> Compo Name </th>
-          <th> Date </th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @user.entries.each do |entry| %>
+    <section>
+      <table class="table table-striped">
+        <thead>
           <tr>
-            <td> <%= link_to entry.name, entry.jam %> </td>
-            <td> <%= entry.created_at %> </td>
+            <th> Compo Name </th>
+            <th> Date </th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </section>
+        </thead>
+        <tbody>
+          <% @user.entries.each do |entry| %>
+            <tr>
+              <td> <%= link_to entry.name, Jam.find(entry.jam) %> </td>
+              <td> <%= entry.created_at %> </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </section>
+  <% end %>
 
 </div>

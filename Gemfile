@@ -14,6 +14,7 @@ gem 'font-awesome-sass-rails'
 gem 'sqlite3'
 
 group :development do
+  gem 'quiet_assets'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'annotate'
@@ -33,9 +34,6 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
