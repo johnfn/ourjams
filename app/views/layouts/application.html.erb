@@ -10,6 +10,9 @@
 
   <div class="container">
     <ul class="nav nav-pills">
+      <% if signed_in? %>
+      <li class="disabled"> <a href="#"> Hey, <%= current_user.name %>! </a> </li>
+      <% end %>
       <li> <a href="/"> <i class="icon-home"></i>
         Hour Jams</a> </li>
       <% if signed_in? %>

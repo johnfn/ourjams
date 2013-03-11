@@ -7,6 +7,7 @@ Hourcompo::Application.routes.draw do
   resources :users
   resources :jams
   resources :entries
+  resources :comments
 
   get "users/new"
   match '/', to: 'application#show'

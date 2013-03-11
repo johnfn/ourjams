@@ -16,7 +16,6 @@
   </section>
 
   <section>
-
     <% if @jam.entries.count != 0 %>
       <table class="table table-striped">
         <thead>
@@ -27,14 +26,31 @@
           </tr>
         </thead>
         <tbody>
-          <% @jam.entries.each do |u| %>
+          <% @jam.entries.each_with_index do |u, i| %>
             <tr>
               <td> <%= link_to u.user.name, u.user %> </td>
               <td> <%= u.name %> </td>
               <td> <%= time_ago_in_words(u.updated_at) %> ago </td>
             </tr>
             <tr>
-              <td style="border-top: none;" colspan="3"> <%= u.description %> </td>
+              <td style="border-top: none;" colspan="3">
+                <p> <%= u.description %> </p>
+                <p> <a href="javascript: $('#commentbox<%=i%>').toggle()">Add comment</a> </p>
+                <div id="commentbox<%= i %>" style="display:none;">
+                  <%= form_for(@comment) do |f| %>
+
+                    <%= f.label :content %>
+                    <%= f.text_area :content, :rows => 5 %>
+
+                    <%= hidden_field_tag 'comment[jam_id]', @jam.id %>
+
+                    <%= hidden_field_tag 'comment[user_id]', current_user.id %>
+                    <br/>
+
+                    <%= f.submit "Comment", class: "btn btn-large btn-primary" %>
+                  <% end %>
+                </div>
+              </td>
             </tr>
           <% end %>
 

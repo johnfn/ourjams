@@ -21,6 +21,7 @@ class JamsController < ApplicationController
 
   def show
     @jam = Jam.find(params[:id])
+    @comment = Comment.new
     @entry = Entry.new
   end
 end

@@ -1,21 +1,51 @@
-<div class="center hero-unit">
-  <h1>Hour Jam</h1>
-</div>
+<script language="javascript">
+  $(function() {
+    $("#whylink").click(function() {
+      $("#explanation").toggle();
+    })
+  });
+</script>
 
-<% if signed_in? %>
-  Hey, <%= current_user.name %>. <%= link_to "See your profile.", current_user %>
-<% else %>
+<h1>Hour Jams</h1>
+<section class="lead">
+  <p class="lead">A Jam is when some people work on something creative for a set amount of time, all at the same time. When the time is over, people see and comment on what everyone else did. </p>
+
+  <a class="lead" id="whylink" href="#">[+] Why?</a>
+
+  <div id="explanation" style="display: none;">
+    <p> I'll just provide this Ira Glass quote. </p>
+    <p><i style="font-size: 3em; float: left; margin-right: .3em; color: #eeeeee;" class="icon-quote-left"></i>
+      Nobody tells this to people who are beginners, I wish someone told me. All of us who do creative work, we get into it because we have good taste. But there is this gap. For the first couple years you make stuff, it’s just not that good. It’s trying to be good, it has potential, but it’s not. But your taste, the thing that got you into the game, is still killer. And your taste is why your work disappoints you. A lot of people never get past this phase, they quit. Most people I know who do interesting, creative work went through years of this. We know our work doesn’t have this special thing that we want it to have. We all go through this. And if you are just starting out or you are still in this phase, you gotta know its normal and the most important thing you can do is do a lot of work. <b>Put yourself on a deadline so that every week you will finish one story.</b> It is only by going through a volume of work that you will close that gap, and your work will be as good as your ambitions. And I took longer to figure out how to do this than anyone I’ve ever met. It’s gonna take awhile. It’s normal to take awhile. You’ve just gotta fight your way through.<p>
+      <p> &mdash; Ira Glass </p>
+  </div>
+
+</section>
+
+<% if !signed_in? %>
   <%= link_to "Sign up", "/signup" %>
   <%= link_to "Sign in", "/sessions/new" %>
   <%= link_to "New jam", "/jams/new" %>
 <% end %>
 
-<p>
-  Recent jams:
-</p>
+<h3> Recent jams: </h3>
 
 <section>
-  <% @jams.each do |jam| %>
-    <%= link_to jam.description, jam %>
+  <% if @recentjams.count != 0 %>
+    <table class="table table-striped">
+      <tbody>
+        <% @recentjams.each do |u| %>
+          <tr>
+            <td> <%= link_to u.name, u %> </td>
+            <td> <%= time_ago_in_words(u.updated_at) %> ago </td>
+          </tr>
+          <tr>
+            <td style="border-top: none;" colspan="3"> <%= u.description %> </td>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+  <% else %>
+    No entries yet.
   <% end %>
 </section>
