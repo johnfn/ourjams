@@ -1,4 +1,6 @@
 Hourcompo::Application.routes.draw do
+  get "comment/new"
+
   get "entries/new"
 
   get "jams/new"

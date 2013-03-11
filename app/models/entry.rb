@@ -14,6 +14,7 @@
 
 class Entry < ActiveRecord::Base
   attr_accessible :description, :link, :name, :jam, :user
+  has_many :comments
   belongs_to :jam
   belongs_to :user
 end

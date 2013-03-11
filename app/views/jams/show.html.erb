@@ -35,6 +35,19 @@
             <tr>
               <td style="border-top: none;" colspan="3">
                 <p> <%= u.description %> </p>
+              </td>
+            </tr>
+
+            <% u.comments.each do |c| %>
+              <tr>
+                <td colspan="3" style="border-top: none; padding-left: 20px;">
+                  <p style="border-left: 1px solid gray; padding-left: 10px;"> <%= c.content %> &mdash; <%= c.user.name %> </p>
+                </td>
+              </tr>
+            <% end %>
+
+            <tr>
+              <td style="border-top: none;" colspan="3">
                 <p> <a href="javascript: $('#commentbox<%=i%>').toggle()">Add comment</a> </p>
                 <div id="commentbox<%= i %>" style="display:none;">
                   <%= form_for(@comment) do |f| %>
@@ -42,12 +55,12 @@
                     <%= f.label :content %>
                     <%= f.text_area :content, :rows => 5 %>
 
-                    <%= hidden_field_tag 'comment[jam_id]', @jam.id %>
+                    <%= hidden_field_tag 'comment[entry_id]', u.id %>
 
                     <%= hidden_field_tag 'comment[user_id]', current_user.id %>
                     <br/>
 
-                    <%= f.submit "Comment", class: "btn btn-large btn-primary" %>
+                    <%= f.submit "Comment", class: "btn" %>
                   <% end %>
                 </div>
               </td>
