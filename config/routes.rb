@@ -4,6 +4,7 @@ Hourcompo::Application.routes.draw do
   resources :jams
   resources :entries
   resources :comments
+  resources :users, :only => [:show]
 
   root :to => "application#show"
 end
