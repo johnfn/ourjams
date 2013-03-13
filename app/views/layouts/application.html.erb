@@ -17,10 +17,10 @@
         Hour Jams</a> </li>
       <% if signed_in? %>
       <li> <%= link_to "<i class='icon-user'></i>My Profile".html_safe, current_user %> </li>
-      <li> <%= link_to "<i class='icon-signout'></i>Sign Out".html_safe, "/signout" %> </li>
+      <li> <%= link_to "<i class='icon-signout'></i>Sign Out".html_safe, destroy_user_session_url %> </li>
       <% else %>
-        <li> <%= link_to "<i class='icon-check'></i>Sign up".html_safe, "/signup" %> </li>
-        <li> <%= link_to "<i class='icon-signin'></i>Sign in".html_safe, "/sessions/new" %> </li>
+        <li> <%= link_to "<i class='icon-check'></i>Sign up".html_safe, new_user_registration_url %> </li>
+        <li> <%= link_to "<i class='icon-signin'></i>Sign in".html_safe, new_user_session_url %> </li>
       <% end %>
       <li> <a href="#"><i class='icon-reorder'></i>All Jams</a> </li>
       <li> <a href="/jams/new"><i class='icon-plus'></i>New Jam</a> </li>
