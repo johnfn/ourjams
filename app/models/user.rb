@@ -26,8 +26,6 @@ class User < ActiveRecord::Base
   has_many :users
   has_many :jams, :foreign_key => "organizer_id"
 
-  has_secure_password
-
   before_create :create_remember_token
   before_save { |user| user.email = email.downcase }
 
