@@ -13,6 +13,7 @@ gem 'font-awesome-sass-rails'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem 'devise'
 
 group :development do
   gem 'quiet_assets'
