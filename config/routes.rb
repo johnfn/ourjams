@@ -1,4 +1,6 @@
 Hourcompo::Application.routes.draw do
+  devise_for :users
+
   get "comment/new"
 
   get "entries/new"
