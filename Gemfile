@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.2.12'
+gem "bootstrap-sass"
 gem 'bootstrap-sass-rails'
 gem 'bcrypt-ruby', '3.0.1'
 
@@ -12,6 +13,7 @@ gem 'font-awesome-sass-rails'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem 'devise'
 
 group :development do
   gem 'quiet_assets'
