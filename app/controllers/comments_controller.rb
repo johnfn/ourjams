@@ -7,6 +7,6 @@ class CommentsController < ApplicationController
       flash[:failure] = "Failed to add comment, for some reason."
     end
 
-    redirect_to @comment.entry
+    redirect_to @comment.entry.jam
   end
 end

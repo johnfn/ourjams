@@ -13,6 +13,8 @@ user2 = User.new(name: "herpderp", email: "derpderp@derp.com", password: "derpde
 user2.save
 
 jam = Jam.new(description: "this is an awesome jam", name: "superjam")
+jam.start = Time.now
+jam.end = Time.now
 jam.user = user1
 jam.save
 
