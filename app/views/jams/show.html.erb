@@ -4,14 +4,11 @@
   <section>
     <h1>
       <%= @jam.name %>
+      <small>organized by <%= link_to @jam.user.name, @jam.user %>.</small>
     </h1>
 
     <p class="lead">
       <%= @jam.description %>
-    </p>
-
-    <p class="lead">
-      Organized by <%= link_to @jam.user.name, @jam.user %>.
     </p>
   </section>
 
@@ -41,7 +38,7 @@
             <% u.comments.each do |c| %>
               <tr>
                 <td colspan="3" style="border-top: none; padding-left: 20px;">
-                  <p style="border-left: 1px solid gray; padding-left: 10px;"> <%= c.content %> &mdash; <%= link_to c.user.name, c.user %> </p>
+                  <p style="border-left: 1px solid lightgray; padding-left: 10px;"> <%= c.content %> &mdash; <%= link_to c.user.name, c.user %> </p>
                 </td>
               </tr>
             <% end %>
