@@ -41,7 +41,7 @@
             <% u.comments.each do |c| %>
               <tr>
                 <td colspan="3" style="border-top: none; padding-left: 20px;">
-                  <p style="border-left: 1px solid gray; padding-left: 10px;"> <%= c.content %> &mdash; <%= c.user.name %> </p>
+                  <p style="border-left: 1px solid gray; padding-left: 10px;"> <%= c.content %> &mdash; <%= link_to c.user.name, c.user %> </p>
                 </td>
               </tr>
             <% end %>
