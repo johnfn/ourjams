@@ -22,7 +22,7 @@
       <% if @can_edit %>
         <a href="javascript: $('#description_text').toggle()">(edit)</a>
 
-        <div id="description_text">
+        <div id="description_text" style="display:none;">
           <h3> Edit jam </h3>
           <%= form_for(@jam) do |f| %>
             <%= f.text_area :description, :value => @jam.description, :rows => 3 %>
@@ -49,15 +49,7 @@
         </div>
       <% end %>
 
-      <div style="color:#a00;">
-        <% if @jam_ongoing %>
-          <%= time_ago_in_words(@jam.end).capitalize %> until the deadline!
-        <% elsif not @jam_started %>
-          <%= time_ago_in_words(@jam.start) %> until the start of the jam.
-        <% elsif @jam_ended %>
-          Jam has ended.
-        <% end %>
-      </div>
+      <%= render "deadline" %>
     </p>
   </section>
 

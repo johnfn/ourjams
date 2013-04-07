@@ -28,9 +28,12 @@
     <table class="table table-striped">
       <tbody>
         <% @recentjams.each do |u| %>
+      <% # extreme hack to get local passing to work. i dont get why the normal way dosent work here
+        %>
+        <% @jam = u %>
           <tr>
             <td> <%= link_to u.name, u %> </td>
-            <td> <%= time_ago_in_words(u.updated_at) %> ago </td>
+            <td> <%= render "jams/deadline" %> </td>
           </tr>
           <tr>
             <td style="border-top: none;" colspan="3"> <%= u.description %> </td>

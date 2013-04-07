@@ -17,4 +17,16 @@ class Jam < ActiveRecord::Base
   attr_accessible :description, :end, :name, :start, :end, :organizer_id
   has_many :entries
   belongs_to :user, :class_name => "User", :foreign_key => "organizer_id"
+
+  def started
+    Time.now - self.start > 0
+  end
+
+  def ended
+    Time.now - self.end > 0
+  end
+
+  def ongoing
+    self.started && !self.ended
+  end
 end
