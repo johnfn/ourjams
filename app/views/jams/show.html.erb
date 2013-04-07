@@ -8,11 +8,27 @@
     </h1>
 
     <p class="lead">
-      <%= @jam.description %>
+      <%= simple_format(@jam.description) %>
+
+      <% if @can_edit %>
+        <a href="javascript: $('#description_text').toggle()">(edit)</a>
+
+        <p id="description_text">
+          <%= form_for(@jam) do |f| %>
+            <%= f.text_area :description, :value => @jam.description, :rows => 3 %>
+
+            <br/>
+            <%= f.submit "Update jam", class: "btn btn-small btn-primary" %>
+          <% end %>
+        </p>
+      <% end %>
     </p>
   </section>
 
   <section>
+    <h3>
+      Entries (<%= @jam.entries.count %>)
+    </h3>
     <% if @jam.entries.count != 0 %>
       <table class="table">
         <thead>
@@ -47,17 +63,19 @@
               <td style="border-top: none;" colspan="3">
                 <p> <a href="javascript: $('#commentbox<%=i%>').toggle()">Add comment</a> </p>
                 <div id="commentbox<%= i %>" style="display:none;">
-                  <%= form_for(@comment) do |f| %>
+                  <% if signed_in? %>
+                    <%= form_for(@comment) do |f| %>
 
-                    <%= f.label :content %>
-                    <%= f.text_area :content, :rows => 5 %>
+                      <%= f.label :content %>
+                      <%= f.text_area :content, :rows => 5 %>
 
-                    <%= hidden_field_tag 'comment[entry_id]', u.id %>
+                      <%= hidden_field_tag 'comment[entry_id]', u.id %>
 
-                    <%= hidden_field_tag 'comment[user_id]', current_user.id %>
-                    <br/>
+                      <%= hidden_field_tag 'comment[user_id]', current_user.id %>
+                      <br/>
 
-                    <%= f.submit "Comment", class: "btn" %>
+                      <%= f.submit "Comment", class: "btn" %>
+                    <% end %>
                   <% end %>
                 </div>
               </td>
@@ -72,14 +90,15 @@
   </section>
 
   <% if signed_in? %>
-    <div class="span6 offset4">
+  <h3> Submit an entry </h3>
+    <div>
       <%= form_for(@entry) do |f| %>
 
         <%= f.label :name %>
         <%= f.text_field :name %>
 
         <%= f.label :description %>
-        <%= f.text_area :description %>
+        <%= f.text_area :description, :rows => 5 %>
 
         <%= f.label :link %>
         <%= f.text_field :link %>
