@@ -14,11 +14,9 @@ class JamsController < ApplicationController
     @jam = Jam.find(params[:id])
 
     if @jam.update_attributes(params[:jam])
-      puts "good"
       flash[:success] = "Jam successfully updated!"
       redirect_to(@jam)
     else
-      puts "bad"
       flash[:failure] = "Something went wrong."
       redirect_to(@jam)
     end

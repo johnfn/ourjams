@@ -1,5 +1,14 @@
 <% provide(:title, @jam.name) %>
 
+<% if signed_in? %>
+  <script>
+  $(function() {
+    $("#datetimepicker1").datetimepicker();
+    $("#datetimepicker2").datetimepicker();
+  });
+  </script>
+<% end %>
+
 <div class="row">
   <section>
     <h1>
@@ -13,14 +22,31 @@
       <% if @can_edit %>
         <a href="javascript: $('#description_text').toggle()">(edit)</a>
 
-        <p id="description_text">
+        <div id="description_text">
+          <h3> Edit jam </h3>
           <%= form_for(@jam) do |f| %>
             <%= f.text_area :description, :value => @jam.description, :rows => 3 %>
+
+            <%= f.label :start %>
+            <div id="datetimepicker1" class="input-append date">
+              <input type="text" data-format="dd/MM/yyyy hh:mm:ss" name="jam[start]" value="<%= @jam.start.strftime('%d/%m/%Y %H:%M:%S') %>"></input>
+              <span class="add-on">
+                <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+              </span>
+            </div>
+
+            <%= f.label :end %>
+            <div id="datetimepicker2" class="input-append date">
+              <input type="text" data-format="dd/MM/yyyy hh:mm:ss" name="jam[end]" value="<%= @jam.end.strftime('%d/%m/%Y %H:%M:%S') %>"></input>
+              <span class="add-on">
+                <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+              </span>
+            </div>
 
             <br/>
             <%= f.submit "Update jam", class: "btn btn-small btn-primary" %>
           <% end %>
-        </p>
+        </div>
       <% end %>
     </p>
   </section>

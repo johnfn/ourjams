@@ -3,8 +3,8 @@ class CreateJams < ActiveRecord::Migration
     create_table :jams do |t|
       t.string :name
       t.text :description
-      t.date :start
-      t.date :end
+      t.datetime :start
+      t.datetime :end
 
       t.timestamps
     end

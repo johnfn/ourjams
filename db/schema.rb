@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(:version => 20130313000829) do
   create_table "jams", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.date     "start"
-    t.date     "end"
+    t.datetime "start"
+    t.datetime "end"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.integer  "entry_id"
