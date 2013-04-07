@@ -37,6 +37,10 @@ class JamsController < ApplicationController
     @jam = Jam.find(params[:id])
     @comment = Comment.new
     @entry = Entry.new
-    @can_edit = signed_in? and @jam.user.id == current_user.id
+    @can_edit = signed_in? && @jam.user.id == current_user.id
+
+    @jam_started = Time.now - @jam.start > 0
+    @jam_ended = Time.now - @jam.end > 0
+    @jam_ongoing = @jam_started && !@jam_ended
   end
 end
