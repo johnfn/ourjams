@@ -17,7 +17,7 @@ gem 'font-awesome-sass-rails'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem 'pg'
 gem 'devise'
 
 group :development do
