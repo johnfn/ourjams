@@ -75,7 +75,7 @@
             </tr>
             <tr>
               <td style="border-top: none;" colspan="3">
-                <p> <%= u.description %> </p>
+                <p> <%= simple_format(u.description) %> </p>
               </td>
             </tr>
 
@@ -126,11 +126,8 @@
           <%= f.label :name %>
           <%= f.text_field :name %>
 
-          <%= f.label :description %>
+          <%= f.label :content %>
           <%= f.text_area :description, :rows => 5 %>
-
-          <%= f.label :link %>
-          <%= f.text_field :link %>
 
           <%= hidden_field_tag 'entry[jam_id]', @jam.id %>
 
