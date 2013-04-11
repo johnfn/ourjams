@@ -37,6 +37,7 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.1)
       debug_inspector (>= 0.0.1)
+    bluecloth (2.2.0)
     bootstrap-datetimepicker-rails (0.0.10)
     bootstrap-sass (2.3.0.1)
       sass (~> 3.2)
@@ -137,6 +138,7 @@ DEPENDENCIES
   bcrypt-ruby (= 3.0.1)
   better_errors
   binding_of_caller
+  bluecloth
   bootstrap-datetimepicker-rails
   bootstrap-sass
   bootstrap-sass-rails

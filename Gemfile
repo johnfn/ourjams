@@ -10,6 +10,8 @@ gem "bootstrap-sass"
 gem 'bootstrap-sass-rails'
 gem 'bcrypt-ruby', '3.0.1'
 
+gem 'bluecloth'  
+
 gem "jquery-rails"
 gem 'bootstrap-datetimepicker-rails'
 gem 'font-awesome-sass-rails'

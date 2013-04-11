@@ -75,7 +75,7 @@
             </tr>
             <tr>
               <td style="border-top: none;" colspan="3">
-                <p> <%= simple_format(u.description) %> </p>
+                <p> <%= markdown = BlueCloth.new(u.description).to_html.html_safe %> </p>
               </td>
             </tr>
 
