@@ -23,9 +23,9 @@
     </p>
   </section>
 
-  <% if @user.jams.count > 0 %>
-    <h3> Organized jams: </h3>
+  <h3> Organized jams: </h3>
 
+  <% if @user.jams.count > 0 %>
     <section>
       <table class="table table-striped">
         <thead>
@@ -40,15 +40,19 @@
               <td> <%= link_to jam.name, jam %> </td>
               <td> <%= jam.created_at %> </td>
             </tr>
-          <% end %>
+        <% end %>
         </tbody>
       </table>
     </section>
+  <% else %>
+    <section>
+      None.
+    </section>
   <% end %>
 
-  <% if @user.jams.count > 0 %>
-    <h3> Attended jams: </h3>
+  <h3> Attended jams: </h3>
 
+  <% if @user.entries.count > 0 %>
     <section>
       <table class="table table-striped">
         <thead>
@@ -66,6 +70,10 @@
           <% end %>
         </tbody>
       </table>
+    </section>
+  <% else %>
+    <section>
+      None!
     </section>
   <% end %>
 
