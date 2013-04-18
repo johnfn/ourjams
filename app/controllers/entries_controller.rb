@@ -15,4 +15,20 @@ class EntriesController < ApplicationController
 
     redirect_to entry.jam
   end
+
+  def show
+    @entry = Entry.find(params[:id])
+  end
+
+  def update
+    @entry = Entry.find(params[:id])
+
+    if @entry.update_attributes(params[:entry])
+      flash[:success] = "Entry successfully updated!"
+      redirect_to(@entry)
+    else
+      flash[:failure] = "Something went wrong."
+      redirect_to(@entry)
+    end
+  end
 end
