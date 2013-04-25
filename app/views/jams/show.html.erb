@@ -82,7 +82,7 @@
             <% u.comments.each do |c| %>
               <tr>
                 <td colspan="3" style="border-top: none; padding-left: 20px;">
-                  <p style="border-left: 1px solid lightgray; padding-left: 10px;"> <%= c.content %> &mdash; <%= link_to c.user.name, c.user %> </p>
+                  <p style="border-left: 1px solid lightgray; padding-left: 10px;"> <%= simple_format(c.content) %> &mdash; <%= link_to c.user.name, c.user %> </p>
                 </td>
               </tr>
             <% end %>
@@ -93,9 +93,9 @@
                   <% if signed_in? and u.user.id == current_user.id %>
                     <%= link_to "Edit", u %>
                   <% end %>
-                 <a href="javascript: $('#commentbox<%=i%>').toggle()">Add comment</a> </p>
-                <div id="commentbox<%= i %>" style="display:none;">
-                  <% if signed_in? %>
+                <% if signed_in? %>
+                  <a href="javascript: $('#commentbox<%=i%>').toggle()">Add comment</a> </p>
+                  <div id="commentbox<%= i %>" style="display:none;">
                     <%= form_for(@comment) do |f| %>
 
                       <%= f.label :content %>
@@ -108,8 +108,10 @@
 
                       <%= f.submit "Comment", class: "btn" %>
                     <% end %>
-                  <% end %>
-                </div>
+                  </div>
+                <% else %>
+                  <small> Sign in to leave a comment. </small>
+                <% end %>
               </td>
             </tr>
           <% end %>

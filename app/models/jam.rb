@@ -5,8 +5,8 @@
 #  id           :integer          not null, primary key
 #  name         :string(255)
 #  description  :text
-#  start        :date
-#  end          :date
+#  start        :datetime
+#  end          :datetime
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  entry_id     :integer
