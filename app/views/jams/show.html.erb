@@ -91,7 +91,7 @@
               <td style="border-top: none;" colspan="3">
                 <p>
                   <% if signed_in? and u.user.id == current_user.id %>
-                    <%= link_to "Edit", u %>
+                    <%= link_to "Edit", u %> |
                   <% end %>
                 <% if signed_in? %>
                   <a href="javascript: $('#commentbox<%=i%>').toggle()">Add comment</a> </p>
@@ -110,7 +110,7 @@
                     <% end %>
                   </div>
                 <% else %>
-                  <small> Sign in to leave a comment. </small>
+                  <small><%= link_to "Sign in", new_user_session_url %> to leave a comment. </small>
                 <% end %>
               </td>
             </tr>
