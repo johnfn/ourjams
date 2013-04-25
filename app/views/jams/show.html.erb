@@ -80,7 +80,7 @@
             </tr>
 
             <% u.comments.each do |c| %>
-              <tr>
+              <tr style="background-color: #eee; border: 5px solid white">
                 <td colspan="3" style="border-top: none; padding-left: 20px;">
                   <p style="border-left: 1px solid lightgray; padding-left: 10px;"> <%= simple_format(c.content) %> &mdash; <%= link_to c.user.name, c.user %> </p>
                 </td>
