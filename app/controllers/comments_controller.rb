@@ -9,4 +9,11 @@ class CommentsController < ApplicationController
 
     redirect_to @comment.entry.jam
   end
+
+  def destroy
+    comment = Comment.find(params[:id])
+    jam = comment.entry.jam
+    comment.destroy
+    redirect_to jam
+  end
 end
