@@ -16,8 +16,10 @@
       <small>organized by <%= link_to @jam.user.name, @jam.user %>.</small>
     </h1>
 
-    <p class="lead">
-      <%= simple_format(@jam.description) %>
+    <p>
+      <div class="lead">
+        <%= simple_format(@jam.description) %>
+      </div>
 
       <% if @can_edit %>
         <a href="javascript: $('#description_text').toggle()">(edit)</a>
@@ -49,13 +51,16 @@
         </div>
       <% end %>
 
-      <%= render "deadline" %>
     </p>
   </section>
 
   <section>
     <h3>
       Entries (<%= @jam.entries.count %>)
+      <small>
+        <%= render "deadline" %>
+      </small>
+
     </h3>
     <% if @jam.entries.count != 0 %>
       <table class="table">
@@ -105,7 +110,7 @@
                     <%= form_for(@comment) do |f| %>
 
                       <%= f.label :content %>
-                      <%= f.text_area :content, :rows => 5 %>
+                      <%= f.text_area :content, :rows => 5, :cols => 180, :class => "input-xxlarge" %>
 
                       <%= hidden_field_tag 'comment[entry_id]', u.id %>
 
