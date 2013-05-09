@@ -71,7 +71,9 @@
               <tr>
                 <td style="border-top: none;" colspan="3">
 
-                  <h4> <%= u.name %> </h4>
+                  <h4> <%= u.name %>
+                    <small>by <%= link_to u.user.name, u.user %></small>
+                  </h4>
 
                   <% if u.markdown %>
                     <div class="entry"> <%= BlueCloth.new(u.description).to_html.html_safe %> </p>
@@ -97,14 +99,13 @@
               <tr>
                 <td style="border-top: none; border-bottom: 1px solid lightgray;" colspan="3">
                   <p>
-                    <% if signed_in? and u.user.id == current_user.id %>
-                      <%= link_to "Edit", u %> |
-                    <% end %>
+                  <%= time_ago_in_words(u.updated_at) %> ago
+                  <% if signed_in? and u.user.id == current_user.id %>
+                    | <%= link_to "Edit", u %>
+                  <% end %>
 
-                  by <%= link_to u.user.name, u.user %> |
-                  <%= time_ago_in_words(u.updated_at) %> ago |
                   <% if signed_in? %>
-                    <a href="javascript: $('#commentbox<%=i%>').toggle()">Add comment</a> </p>
+                    | <a href="javascript: $('#commentbox<%=i%>').toggle()">Add comment</a> </p>
                     <div id="commentbox<%= i %>" style="display:none;">
                       <%= form_for(@comment) do |f| %>
 
