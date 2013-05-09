@@ -1,6 +1,6 @@
 <% if @jam.ongoing %>
-  <span style="color:#a00;">
-    <%= time_ago_in_words(@jam.end).capitalize %> until the deadline.
+  <span style="color:#c70;">
+    Jam is ongoing! <%= time_ago_in_words(@jam.end).capitalize %> until the deadline.
   </span>
 <% elsif not @jam.started %>
   <span style="color:#0a0;">
