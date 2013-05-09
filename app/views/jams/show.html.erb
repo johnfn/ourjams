@@ -80,7 +80,11 @@
             </tr>
             <tr>
               <td style="border-top: none;" colspan="3">
-                <p> <%= simple_format(u.description) %> </p>
+                <% if u.markdown %>
+                  <p> <%= BlueCloth.new(u.description).to_html.html_safe %> </p>
+                <% else %>
+                  <p> <%= simple_format(u.description) %> </p>
+                <% end %>
               </td>
             </tr>
 
@@ -90,7 +94,6 @@
                   <p style="border-left: 1px solid lightgray; padding-left: 10px;"> <%= simple_format(c.content) %> &mdash; <%= link_to c.user.name, c.user %>
 
                     <% if signed_in? and u.user.id == c.user.id %>
-
                       <%= link_to "[delete]", c, :method => :delete %>
                     <% end %>
                   </p>
@@ -145,6 +148,9 @@
 
           <%= f.label :content %>
           <%= f.text_area :description, :rows => 5 %>
+          <br/>
+          Markdown?
+          <%= f.check_box :markdown %>
 
           <%= hidden_field_tag 'entry[jam_id]', @jam.id %>
 

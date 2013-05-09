@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130424235406) do
+ActiveRecord::Schema.define(:version => 20130508232933) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -25,10 +25,11 @@ ActiveRecord::Schema.define(:version => 20130424235406) do
     t.string   "name"
     t.text     "description"
     t.string   "link"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.integer  "jam_id"
     t.integer  "user_id"
+    t.boolean  "markdown",    :default => false
   end
 
   create_table "jams", :force => true do |t|

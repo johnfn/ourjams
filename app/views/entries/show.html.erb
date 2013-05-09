@@ -7,6 +7,9 @@
       <br />
       <%= f.text_area :description, :value => @entry.description, :rows => 10 %>
       <br />
+      Markdown?
+      <%= f.check_box :markdown %>
+      <br />
       <%= f.submit "Update entry", class: "btn btn-small btn-primary" %>
     <% end %>
   </section>
