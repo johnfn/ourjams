@@ -55,114 +55,113 @@
   </section>
 
   <section>
-    <h3>
+    <h3 style="border-bottom: 1px solid lightgray;">
       Entries (<%= @jam.entries.count %>)
       <small>
         <%= render "deadline" %>
       </small>
 
     </h3>
-    <% if @jam.entries.count != 0 %>
-      <table class="table">
-        <thead>
-          <tr>
-            <th> User </th>
-            <th> Title </th>
-            <th> Date </th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @jam.entries.each_with_index do |u, i| %>
-            <tr style="background-color: #f6f6f6;">
-              <td> <%= link_to u.user.name, u.user %> </td>
-              <td> <%= u.name %> </td>
-              <td> <%= time_ago_in_words(u.updated_at) %> ago </td>
-            </tr>
-            <tr>
-              <td style="border-top: none;" colspan="3">
-                <% if u.markdown %>
-                  <p> <%= BlueCloth.new(u.description).to_html.html_safe %> </p>
-                <% else %>
-                  <p> <%= simple_format(u.description) %> </p>
-                <% end %>
-              </td>
-            </tr>
+    <div class="span6">
+      <% if @jam.entries.count != 0 %>
+        <table class="table">
+          <tbody>
+            <% @jam.entries.each_with_index do |u, i| %>
 
-            <% u.comments.each do |c| %>
-              <tr style="background-color: #eee; border: 5px solid white">
-                <td colspan="3" style="border-top: none; padding-left: 20px;">
-                  <p style="border-left: 1px solid lightgray; padding-left: 10px;"> <%= simple_format(c.content) %> &mdash; <%= link_to c.user.name, c.user %>
+              <tr>
+                <td style="border-top: none;" colspan="3">
 
-                    <% if signed_in? and u.user.id == c.user.id %>
-                      <%= link_to "[delete]", c, :method => :delete %>
+                  <h4> <%= u.name %> </h4>
+
+                  <% if u.markdown %>
+                    <div class="entry"> <%= BlueCloth.new(u.description).to_html.html_safe %> </p>
+                  <% else %>
+                    <div class="entry"> <%= simple_format(u.description) %> </p>
+                  <% end %>
+                </td>
+              </tr>
+
+              <% u.comments.each do |c| %>
+                <tr style="background-color: #eee; border: 5px solid white">
+                  <td colspan="3" style="border-top: none; padding-left: 20px;">
+                    <p style="border-left: 1px solid lightgray; padding-left: 10px;"> <%= simple_format(c.content) %> &mdash; <%= link_to c.user.name, c.user %>
+
+                      <% if signed_in? and u.user.id == c.user.id %>
+                        <%= link_to "[delete]", c, :method => :delete %>
+                      <% end %>
+                    </p>
+                  </td>
+                </tr>
+              <% end %>
+
+              <tr>
+                <td style="border-top: none; border-bottom: 1px solid lightgray;" colspan="3">
+                  <p>
+                    <% if signed_in? and u.user.id == current_user.id %>
+                      <%= link_to "Edit", u %> |
                     <% end %>
-                  </p>
+
+                  by <%= link_to u.user.name, u.user %> |
+                  <%= time_ago_in_words(u.updated_at) %> ago |
+                  <% if signed_in? %>
+                    <a href="javascript: $('#commentbox<%=i%>').toggle()">Add comment</a> </p>
+                    <div id="commentbox<%= i %>" style="display:none;">
+                      <%= form_for(@comment) do |f| %>
+
+                        <%= f.label "Comment:" %>
+                        <%= f.text_area :content, :rows => 5 %>
+
+                        <%= hidden_field_tag 'comment[entry_id]', u.id %>
+
+                        <%= hidden_field_tag 'comment[user_id]', current_user.id %>
+                        <br/>
+
+                        <%= f.submit "Comment", class: "btn" %>
+                      <% end %>
+                    </div>
+                  <% else %>
+                    <small><%= link_to "Sign in", new_user_session_url %> to leave a comment. </small>
+                  <% end %>
                 </td>
               </tr>
             <% end %>
 
-            <tr>
-              <td style="border-top: none;" colspan="3">
-                <p>
-                  <% if signed_in? and u.user.id == current_user.id %>
-                    <%= link_to "Edit", u %> |
-                  <% end %>
-                <% if signed_in? %>
-                  <a href="javascript: $('#commentbox<%=i%>').toggle()">Add comment</a> </p>
-                  <div id="commentbox<%= i %>" style="display:none;">
-                    <%= form_for(@comment) do |f| %>
+          </tbody>
+        </table>
+      <% else %>
+        No entries yet.
+      <% end %>
 
-                      <%= f.label :content %>
-                      <%= f.text_area :content, :rows => 5, :cols => 180, :class => "input-xxlarge" %>
+      <% if @jam.ongoing %>
+        <% if signed_in? %>
+          <h3> Submit an entry </h3>
+          <div>
+            <%= form_for(@entry) do |f| %>
 
-                      <%= hidden_field_tag 'comment[entry_id]', u.id %>
+              <%= f.label :name %>
+              <%= f.text_field :name %>
 
-                      <%= hidden_field_tag 'comment[user_id]', current_user.id %>
-                      <br/>
+              <%= f.label :content %>
+              <%= f.text_area :description, :rows => 5 %>
+              <br/>
+              Markdown?
+              <%= f.check_box :markdown %>
+              <br/>
 
-                      <%= f.submit "Comment", class: "btn" %>
-                    <% end %>
-                  </div>
-                <% else %>
-                  <small><%= link_to "Sign in", new_user_session_url %> to leave a comment. </small>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
+              <%= hidden_field_tag 'entry[jam_id]', @jam.id %>
 
-        </tbody>
-      </table>
-    <% else %>
-      No entries yet.
-    <% end %>
+              <%= hidden_field_tag 'entry[user_id]', current_user.id %>
+              <br/>
+
+              <%= f.submit "Submit entry", class: "btn btn-large btn-primary" %>
+            <% end %>
+          </div>
+        <% else %>
+          <% link_to "Sign up", "/signup" %>
+        <% end %>
+      <% end %>
+    </div>
+
   </section>
 
-  <% if @jam.ongoing %>
-    <% if signed_in? %>
-      <h3> Submit an entry </h3>
-      <div>
-        <%= form_for(@entry) do |f| %>
-
-          <%= f.label :name %>
-          <%= f.text_field :name %>
-
-          <%= f.label :content %>
-          <%= f.text_area :description, :rows => 5 %>
-          <br/>
-          Markdown?
-          <%= f.check_box :markdown %>
-          <br/>
-
-          <%= hidden_field_tag 'entry[jam_id]', @jam.id %>
-
-          <%= hidden_field_tag 'entry[user_id]', current_user.id %>
-          <br/>
-
-          <%= f.submit "Submit entry", class: "btn btn-large btn-primary" %>
-        <% end %>
-      </div>
-    <% else %>
-      <% link_to "Sign up", "/signup" %>
-    <% end %>
-  <% end %>
 </div>
